@@ -3,6 +3,7 @@ var $messages = $('.messages-content'),
     i = 0;
 
 var myName = "";
+var myPass = "";
 
 $(window).load(function() {
   myName = prompt("Enter your name");
