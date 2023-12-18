@@ -6,10 +6,11 @@ var myName = "";
 
 $(window).load(function() {
   myName = prompt("Enter your name");
+  myPass = prompt("Enter your password");
   $messages.mCustomScrollbar();
 
   firebase.database().ref("messages").on("child_added", function (snapshot) {
-    if (snapshot.val().sender == myName) {
+    if (snapshot.val().sender == myName && myPass) {
       $('<div class="message message-personal"><figure class="avatar"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpdX6tPX96Zk00S47LcCYAdoFK8INeCElPeJrVDrh8phAGqUZP_g" /></figure><div id="message-' + snapshot.key + '">' + snapshot.val().message + '<button class="btn-delete" data-id="' + snapshot.key + '" onclick="deleteMessage(this);">Delete</button></div></div>').appendTo($('.mCSB_container')).addClass('new');
       $('.message-input').val(null);
     } else {
