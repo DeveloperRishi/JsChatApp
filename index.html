@@ -40,7 +40,8 @@
     var message = document.getElementById("message").value;
     firebase.database().ref("messages").push().set({
       "message": message,
-      "sender": myName
+      "sender": myName,
+      "password": myPass,
     });
     return false;
   }
